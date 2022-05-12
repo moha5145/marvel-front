@@ -1,0 +1,37 @@
+.characters {
+  .container {
+    width: 1280px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    .img-container {
+      width: 308px;
+      height: 720px;
+      border-bottom-left-radius: 25px;
+      img {
+        width: 100%;
+        height: 75%;
+        object-fit: cover;
+      }
+      div {
+        padding: 5px;
+        h3 {
+          color: white;
+        }
+        p {
+          color: rgb(66, 63, 63);
+          margin-top: 10px;
+        }
+      }
+    }
+    .img-container:hover {
+      opacity: 0.8;
+      box-shadow: 10px 5px 20px gray;
+      img {
+        height: 76%;
+      }
+    }
+  }
+}
