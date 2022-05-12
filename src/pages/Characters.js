@@ -23,10 +23,10 @@ const Characters = () => {
         <p>Loading ...</p>
       ) : (
         <div className="container">
-          {characters.results.map((character, index) => {
-            console.log(character);
+          {characters.results.map((character) => {
+            // console.log(character);
             return (
-              <Link to={`/comics/${character._id}`} key={index}>
+              <Link to={`/comics/${character._id}`} key={character._id}>
                 <div className="img-container">
                   <img src={character.thumbnail.path + "." + character.thumbnail.extension} alt="" />
 

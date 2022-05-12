@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import mainImage from "../assets/marvel.png";
 import "../components/header.scss";
 const Header = () => {

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "../pages/style/home.scss";
 
 const Home = ({ comics, isLoading }) => {
@@ -9,12 +8,9 @@ const Home = ({ comics, isLoading }) => {
           <p>Lodding ...</p>
         ) : (
           <div className="main">
-            {comics.results.map((comic, index) => {
-              {
-                // console.log("comic", comic);
-              }
+            {comics.results.map((comic) => {
               return (
-                <div className="img-container" key={index}>
+                <div className="img-container" key={comic._id}>
                   <img src={comic.thumbnail.path + "." + comic.thumbnail.extension} alt="" />
 
                   <div className="description">

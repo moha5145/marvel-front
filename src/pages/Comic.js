@@ -10,27 +10,25 @@ const Comic = () => {
   //   setLoading(false);
   const id = useParams();
   //   console.log(id.characterId);
-  const fetchData = async () => {
-    const response = await axios.get(`http://localhost:4000/comics/${id.characterId}`);
-    setIsLoading(false);
-    setData(response.data);
-    // console.log(response.data);
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(`http://localhost:4000/comics/${id.characterId}`);
+      setIsLoading(false);
+      setData(response.data);
+      // console.log(response.data);
+    };
     fetchData();
-  }, []);
+  }, [id.characterId]);
   return isLoading ? (
     <p>Loading ....</p>
   ) : (
     <section className="comic">
-      {/* {console.log(data)} */}
-
       <div className="container">
         <div className="lg-img-container">
           <img src={data.thumbnail.path + "." + data.thumbnail.extension} alt="" />
           <div className="description">
-            {console.log(data)}
+            {/* {console.log(data)} */}
             <h2>{data.name}</h2>
             <p>{data.description}</p>
           </div>
@@ -39,7 +37,7 @@ const Comic = () => {
         <div className="sm-imgs">
           {data.comics.map((comic) => {
             return (
-              <div className="sm-img-container">
+              <div className="sm-img-container" key={comic._id}>
                 <img src={comic.thumbnail.path + "." + comic.thumbnail.extension} alt="" />
                 <div className="description">
                   <h3>{comic.title}</h3>
