@@ -2,11 +2,13 @@ import "../pages/style/characters.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-const Characters = () => {
+
+const Characters = ({ characterSearch }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState();
+  const [skip, setSkip] = useState(100);
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:4000/characters");
+    const response = await axios.get(`http://localhost:4000/characters?name=${characterSearch}&skip${skip}`);
     // console.log(response.data);
     setCharacters(response.data);
     setIsLoading(false);
@@ -14,7 +16,7 @@ const Characters = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [characterSearch]);
 
   return (
     <section className="characters">
@@ -25,6 +27,7 @@ const Characters = () => {
         <div className="container">
           {characters.results.map((character) => {
             // console.log(character);
+            // console.log(character._id);
             return (
               <Link to={`/comics/${character._id}`} key={character._id}>
                 <div className="img-container">

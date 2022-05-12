@@ -1,6 +1,13 @@
 .home {
   .container {
-    // height: 750px;
+    button {
+      height: 50px;
+      width: 100px;
+    }
+
+    span {
+      color: white;
+    }
 
     .main {
       margin: 50px auto;
