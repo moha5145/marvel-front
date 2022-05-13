@@ -31,7 +31,7 @@ const Header = ({ setComicSearch, setCharacterSearch }) => {
               <span>comics</span>
             </Link>
 
-            <Link to="/">
+            <Link to="/favoris">
               <span>favoris</span>
             </Link>
           </nav>
