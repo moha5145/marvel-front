@@ -20,13 +20,13 @@ function App() {
     <div className="App">
       <Router>
         <Header setComicSearch={setComicSearch} setCharacterSearch={setCharacterSearch} />
-
         <Routes>
           <Route path="/" element={<Comics comicSearch={comicSearch} favoris={favoris} setFavoris={setFavoris} />} />
           <Route path="/comics/:characterId" element={<Character />} />
           <Route path="/characters" element={<Characters characterSearch={characterSearch} />} />
           <Route path="/favoris" element={<Favoris favoris={favoris} setFavoris={setFavoris} />} />
         </Routes>
+        /character/:characterId
       </Router>
     </div>
   );

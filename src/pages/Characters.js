@@ -12,7 +12,9 @@ const Characters = ({ characterSearch }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:4000/characters?name=${characterSearch}&skip=${skip}`);
+      // const response = await axios.get(`http://localhost:4000/characters?name=${characterSearch}&skip=${skip}`);
+      const response = await axios.get(`https://marvel-back-moha.herokuapp.com/characters?name=${characterSearch}&skip=${skip}`);
+
       // console.log(response.data);
       setCharacters(response.data);
       setIsLoading(false);

@@ -12,7 +12,9 @@ const Home = ({ comicSearch, favoris, setFavoris }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:4000/comics?title=${comicSearch}&skip=${skip}`);
+      // const response = await axios.get(`http://localhost:4000/comics?title=${comicSearch}&skip=${skip}`);
+      const response = await axios.get(`https://marvel-back-moha.herokuapp.com/comics?title=${comicSearch}&skip=${skip}`);
+
       setComics(response.data);
       setLoading(false);
       // console.log(response.data);
