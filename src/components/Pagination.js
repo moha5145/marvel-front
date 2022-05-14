@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./pagination.scss";
 const Pagination = ({ page, setPage, count, limit, setSkip }) => {
   const numberOfPage = count / limit;
