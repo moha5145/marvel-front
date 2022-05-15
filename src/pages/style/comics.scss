@@ -19,10 +19,28 @@
         width: 310px;
         height: 720px;
         border-bottom-right-radius: 30px;
+        position: relative;
         img {
           width: 100%;
           height: 64%;
           object-fit: cover;
+        }
+
+        .fav-container {
+          position: absolute;
+          top: 40px;
+          right: 10px;
+          i {
+            font-size: 55px;
+            padding: 5px;
+          }
+          .red-favori {
+            color: #ee171f !important;
+          }
+
+          .white-favori {
+            color: white !important;
+          }
         }
         .description {
           padding: 10px;
@@ -34,19 +52,6 @@
           p {
             padding: 5px 0;
             font-size: 0.9rem;
-          }
-          .fav-container {
-            i {
-              font-size: 30px;
-              padding: 5px;
-            }
-            .red-fav {
-              color: yellow;
-            }
-
-            .red-fav {
-              color: white;
-            }
           }
         }
       }

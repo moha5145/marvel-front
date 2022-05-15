@@ -9,7 +9,20 @@
     .img-container {
       width: 308px;
       height: 720px;
-      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      position: relative;
+      i {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 50px;
+      }
+      .white {
+        color: white;
+      }
+      .red {
+        color: #ee171f;
+      }
       img {
         width: 100%;
         height: 75%;
@@ -30,7 +43,7 @@
       opacity: 0.8;
       box-shadow: 10px 5px 20px gray;
       img {
-        height: 76%;
+        height: 77%;
       }
     }
   }
