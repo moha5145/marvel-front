@@ -10,8 +10,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
       newFavoris.push(comic);
 
       setComicFavoris(newFavoris);
-      // console.log(comicFavoris.length);
-      const response = await axios.post("http://localhost:4000/comics/favoris/post", comic);
+      const response = await axios.post("https://marvel-back-moha.herokuapp.com/comics/favoris/post", comic);
       console.log("toDb", response.data);
     } catch (error) {
       console.log(error);
@@ -20,7 +19,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
 
   const deleteFavoriComics = async (comic) => {
     try {
-      const response = await axios.post("http://localhost:4000/comics/favoris/delete", comic);
+      const response = await axios.post("https://marvel-back-moha.herokuapp.com/comics/favoris/delete", comic);
       console.log("toDb", response.data);
 
       const newFavoris = [...comicFavoris];
@@ -36,7 +35,6 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
   return (
     <section className="home">
       <div className="container">
-        {/* {isLoadingFav && <p>Loding ...</p>} */}
         {isLoading ? (
           <p>Lodding ...</p>
         ) : (

@@ -19,7 +19,7 @@ const Signup = ({ userToken, setUserToken }) => {
         password: password,
       };
       console.log(user);
-      const response = await axios.post("http://localhost:4000/signup", user);
+      const response = await axios.post("https://marvel-back-moha.herokuapp.com/signup", user);
       console.log(response.data);
       const token = response.data.token;
       if (token) {

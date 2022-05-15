@@ -1,7 +1,28 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./style/favoris.scss";
-const Favoris = ({ comicFavoris, setComicFavoris, isLoading, characterFavoris, setCharacterFavoris }) => {
+const Favoris = ({ comicFavoris, setComicFavoris, characterFavoris, setCharacterFavoris }) => {
   const [isComicFavOrCharcFav, setIsComicFavOrCharcFav] = useState("comic");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://marvel-back-moha.herokuapp.com/character/favoris/get");
+        setCharacterFavoris(response.data);
+
+        const responseComicFavoris = await axios.get("https://marvel-back-moha.herokuapp.com/comics/favoris/get");
+        setComicFavoris(responseComicFavoris.data);
+
+        setIsLoading(false);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchData();
+  }, [setCharacterFavoris, setComicFavoris]);
   console.log(comicFavoris);
   return isLoading ? (
     <p>Loading ..</p>

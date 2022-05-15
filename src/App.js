@@ -19,12 +19,12 @@ function App() {
   const [characterSearch, setCharacterSearch] = useState("");
   const [userToken, setUserToken] = useState(Cookies.get("token") || null);
 
-  // const [isLoadingFav, setIsLodingFav] = useState(true);
   const [comics, setComics] = useState();
   const [isLoading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
   const [comicFavoris, setComicFavoris] = useState();
+  const [characterFavoris, setCharacterFavoris] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +32,7 @@ function App() {
       const response = await axios.get(`https://marvel-back-moha.herokuapp.com/comics?title=${comicSearch}&skip=${skip}`);
       setComics(response.data);
 
-      const responseComicFavoris = await axios.get("http://localhost:4000/comics/favoris/get");
+      const responseComicFavoris = await axios.get("https://marvel-back-moha.herokuapp.com/comics/favoris/get");
       setComicFavoris(responseComicFavoris.data);
 
       console.log(responseComicFavoris.data);
@@ -66,10 +66,23 @@ function App() {
           />
 
           <Route path="/comics/:characterId" element={<Character />} />
-          <Route path="/characters" element={<Characters characterSearch={characterSearch} />} />
+          <Route
+            path="/characters"
+            element={<Characters characterSearch={characterSearch} characterFavoris={characterFavoris} setCharacterFavoris={setCharacterFavoris} />}
+          />
           <Route path="/signup" element={<Signup userToken={userToken} setUserToken={setUserToken} />} />
           <Route path="/login" element={<Login userToken={userToken} setUserToken={setUserToken} />} />
-          <Route path="/favoris" element={<Favoris comicFavoris={comicFavoris} setComicFavoris={setComicFavoris} />} />
+          <Route
+            path="/favoris"
+            element={
+              <Favoris
+                comicFavoris={comicFavoris}
+                setComicFavoris={setComicFavoris}
+                characterFavoris={characterFavoris}
+                setCharacterFavoris={setCharacterFavoris}
+              />
+            }
+          />
         </Routes>
       </Router>
     </div>

@@ -1,11 +1,36 @@
 .pagination-btn {
   // background-color: white;
+  max-width: 1280px;
+  margin: 25px auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
   button {
     height: 40px;
     width: 100px;
+    background-color: #ee171f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-bottom-right-radius: 25px;
+    cursor: pointer;
+    // flex: 1;
+    .arow {
+      margin: 0 10px;
+    }
+  }
+  button:hover {
+    opacity: 0.8;
+  }
+  button:active {
+    opacity: 0.7;
   }
   span {
     color: white;
-    padding: 0 5px;
+    font-weight: bold;
+    // padding: 0 px;
   }
 }

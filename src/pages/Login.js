@@ -3,14 +3,14 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Login = ({ userToken, setUserToken }) => {
+const Login = ({ setUserToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost:4000/login", { email, password });
+    const response = await axios.post("https://marvel-back-moha.herokuapp.com/login", { email, password });
     console.log(response.data);
     const token = response.data.token;
     if (token) {

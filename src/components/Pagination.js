@@ -10,6 +10,7 @@ const Pagination = ({ page, setPage, count, limit, setSkip }) => {
           setPage((prevState) => prevState - 1);
         }}
       >
+        <i className="fa-solid fa-arrow-left arow"></i>
         skip
       </button>
       <span>
@@ -24,6 +25,7 @@ const Pagination = ({ page, setPage, count, limit, setSkip }) => {
         }}
       >
         skip
+        <i className="fa-solid fa-arrow-right arow"></i>
       </button>
     </div>
   );
