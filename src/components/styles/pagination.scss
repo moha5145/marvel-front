@@ -1,15 +1,13 @@
 .pagination-btn {
-  // background-color: white;
   max-width: 1280px;
   margin: 25px auto;
-
+  padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 15px;
   button {
-    height: 40px;
-    width: 100px;
+    padding: 10px 15px;
     background-color: #ee171f;
     color: white;
     font-size: 16px;
@@ -17,7 +15,6 @@
     border: none;
     border-bottom-right-radius: 25px;
     cursor: pointer;
-    // flex: 1;
     .arow {
       margin: 0 10px;
     }
@@ -31,6 +28,15 @@
   span {
     color: white;
     font-weight: bold;
-    // padding: 0 px;
+  }
+}
+
+@media (max-width: 1000px) {
+}
+@media (max-width: 670px) {
+  .pagination-btn {
+    display: flex;
+
+    justify-content: center;
   }
 }

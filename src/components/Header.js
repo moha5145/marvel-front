@@ -1,86 +1,62 @@
-import { Link, useLocation } from "react-router-dom";
-import Cookies from "js-cookie";
+import { useLocation } from "react-router-dom";
+
 import mainImage from "../assets/marvel.png";
-import "../components/header.scss";
+import "./styles/header.scss";
+import CustomSearchInput from "./CustomSearchInput";
+import Nav from "./Nav";
+import { useState } from "react";
 
 const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken }) => {
   const location = useLocation();
-  // console.log(location);
+  const [showModal, setShowModal] = useState(false);
+
+  console.log(location.pathname);
   return (
     <>
-      <div className="img-container">
-        <img src={mainImage} alt="" />
+      <div className="header-img-container">
+        <img
+          className="header-img"
+          src={mainImage}
+          alt=""
+          onClick={() => {
+            setShowModal(false);
+          }}
+        />
+        <i
+          // style={location.pathname === "/favoris" ? { marginTop: "0px" } : {}}
+          className="fa-solid fa-bars menu"
+          onClick={() => {
+            setShowModal(!showModal);
+          }}
+        ></i>
       </div>
-      <section className="header">
+      <section
+        className="header"
+        onClick={() => {
+          setShowModal(false);
+        }}
+      >
         <div className="container">
-          {location.pathname === "/" && (
-            <div className="search-container">
-              <i className="fa-solid fa-magnifying-glass loop"></i>
-              <input
-                className="search-bar"
-                placeholder="search"
-                type="text"
-                onChange={(event) => {
-                  setComicSearch(event.target.value);
-                }}
-              />
-            </div>
-          )}
+          <div className="input-container">
+            {location.pathname === "/" && <CustomSearchInput setState={setComicSearch} />}
 
-          {location.pathname === "/characters" && (
-            <div className="search-container">
-              <i className="fa-solid fa-magnifying-glass loop"></i>
-              <input
-                className="search-bar"
-                placeholder="search"
-                type="text"
-                onChange={(event) => {
-                  setCharacterSearch(event.target.value);
-                }}
-              />
-            </div>
-          )}
-
-          <nav>
-            <Link to="/characters">
-              <span>personnages</span>
-            </Link>
-
-            <Link to="/">
-              <span>comics</span>
-            </Link>
-
-            <Link to="/favoris">
-              <span>favoris</span>
-            </Link>
-
-            {!userToken && (
-              <div className="user-container">
-                <Link to="/signup">
-                  <span>S'inscrire</span>
-                </Link>
-
-                <Link to="/login">
-                  <span>se connecter</span>
-                </Link>
-              </div>
-            )}
-
-            {userToken && (
-              <div className="disconnect">
-                <Link
-                  to="/login"
-                  onClick={() => {
-                    Cookies.remove("token");
-                    setUserToken(null);
-                  }}
-                >
-                  <span>Se déconnecter</span>
-                </Link>
-              </div>
-            )}
-          </nav>
+            {location.pathname === "/characters" && <CustomSearchInput setState={setCharacterSearch} />}
+          </div>
+          <section className="nav-container">
+            <Nav userToken={userToken} setUserToken={setUserToken} setShowModal={setShowModal} />
+          </section>
         </div>
+        {showModal && (
+          <section className="modal">
+            <i
+              className="fa-solid fa-xmark"
+              onClick={() => {
+                setShowModal(false);
+              }}
+            ></i>
+            <Nav userToken={userToken} setUserToken={setUserToken} setShowModal={setShowModal} />
+          </section>
+        )}
       </section>
     </>
   );

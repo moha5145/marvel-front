@@ -1,0 +1,30 @@
+.search-container {
+  margin: 20px auto;
+  background-color: white;
+  height: 38px;
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-right-radius: 25px;
+  .loop {
+    background-color: #ee171f;
+    font-size: 23px;
+    padding: 10px;
+  }
+
+  .search-bar {
+    height: 100%;
+    width: 93%;
+    outline: #ee171f;
+    border-bottom-right-radius: 25px;
+    padding-left: 10px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-container {
+    // width: 60%;
+  }
+}

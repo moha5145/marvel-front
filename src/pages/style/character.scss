@@ -1,13 +1,17 @@
 .comic {
   .container {
-    width: 1280px;
+    max-width: 1280px;
     margin: 30px auto;
+    padding: 20px;
     .lg-img-container {
       height: 400px;
       display: flex;
       background-color: rgb(167, 160, 160);
+      // border-bottom-left-radius: 20px;
       box-shadow: 5px 5px 20px gray;
+      // border-bottom-left-radius: 20px;
 
+      border-bottom-right-radius: 25px;
       img {
         height: 100%;
       }
@@ -27,8 +31,9 @@
     .sm-imgs {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
-      width: 1280px;
+      max-width: 1280px;
       margin: 30px auto;
       .sm-img-container {
         width: 413px;
@@ -50,6 +55,37 @@
             color: white;
           }
           p {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .comic {
+    .container {
+      .lg-img-container {
+        // height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: rgb(167, 160, 160);
+        // border-bottom-left-radius: 20px;
+        box-shadow: 5px 5px 20px gray;
+
+        height: 600px;
+        border-bottom-right-radius: 25px;
+
+        img {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          border-bottom-right-radius: 25px;
+        }
+        .description {
+          h2 {
+            margin-bottom: 15px;
           }
         }
       }

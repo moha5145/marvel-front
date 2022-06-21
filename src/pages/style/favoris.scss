@@ -1,5 +1,6 @@
 .favoris {
   color: white;
+  padding: 20px;
   p {
     color: white;
   }
@@ -10,8 +11,8 @@
     gap: 10px;
     button {
       flex: 1;
-      height: 45px;
       font-size: 20px;
+      padding: 10px;
       font-weight: bold;
       cursor: pointer;
       background-color: #ee171f;
@@ -32,13 +33,13 @@
     display: flex;
     justify-content: space-between;
     border-bottom-right-radius: 25px;
-    // box-shadow: 5px 5px 20px #ee171f;
 
     .img-container {
       height: 400px;
 
       img {
         height: 100%;
+        width: 100%;
         object-fit: cover;
       }
     }
@@ -54,6 +55,20 @@
       p {
         font-size: 18px;
         color: black;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .favori-container {
+    flex-direction: column;
+
+    .description {
+      padding: 0px;
+      width: 85% !important;
+      h2 {
+        margin-bottom: 20px;
       }
     }
   }

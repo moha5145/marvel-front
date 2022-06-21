@@ -1,16 +1,18 @@
 .characters {
   .container {
-    width: 1280px;
+    max-width: 1280px;
     margin: 50px auto;
     padding: 0 20px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
     .img-container {
       width: 308px;
-      height: 720px;
+      min-height: 720px;
       border-bottom-right-radius: 25px;
       position: relative;
+      background-color: #ee171f;
       i {
         position: absolute;
         top: 20px;
@@ -44,6 +46,16 @@
       box-shadow: 10px 5px 20px gray;
       img {
         height: 77%;
+      }
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  .characters {
+    .container {
+      .img-container {
+        width: 100%;
       }
     }
   }

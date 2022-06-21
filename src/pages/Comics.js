@@ -41,7 +41,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
           <>
             <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={comics.count} limit={comics.limit} />
             <div className="main">
-              {comics.results.map((comic, index) => {
+              {comics.results.map((comic) => {
                 return (
                   <div className="img-container" key={comic._id}>
                     <img src={comic.thumbnail.path + "." + comic.thumbnail.extension} alt="" />

@@ -1,0 +1,46 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    color: white;
+    line-height: 80px;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  span:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+    text-decoration-color: #ee171f;
+  }
+  .user-container {
+    display: flex;
+    gap: 25px;
+  }
+  .disconnect {
+    span {
+      color: #ee171f;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  nav {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    span {
+      line-height: 50px;
+      font-size: 18px;
+    }
+    .user-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}

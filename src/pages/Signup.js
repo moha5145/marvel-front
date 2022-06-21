@@ -1,8 +1,9 @@
 import "./style/signup.scss";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import CustomInput from "../components/CustomInput";
 
 const Signup = ({ userToken, setUserToken }) => {
   const [username, setUsername] = useState("");
@@ -44,39 +45,19 @@ const Signup = ({ userToken, setUserToken }) => {
           handelSubmit(event);
         }}
       >
-        <input
-          type="text"
-          placeholder="User name"
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="Confirm password"
-          value={confirmPassword}
-          onChange={(event) => {
-            setConfirmPassword(event.target.value);
-          }}
-        />
+        <CustomInput setState={setUsername} value={username} type="text" placeholder="User name" />
+
+        <CustomInput setState={setEmail} value={email} type="email" placeholder="Email" />
+
+        <CustomInput setState={setPassword} value={password} type="password" placeholder="Password" />
+
+        <CustomInput setState={setConfirmPassword} value={confirmPassword} type="password" placeholder="Confirm password" />
+
         <input type="submit" className="submit" />
+
+        <div>
+          Tu as déjà un compte ?<Link to="/login"> Connecte-toi !</Link>
+        </div>
       </form>
     </div>
   );

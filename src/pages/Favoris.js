@@ -34,14 +34,14 @@ const Favoris = ({ comicFavoris, setComicFavoris, characterFavoris, setCharacter
             setIsComicFavOrCharcFav("comic");
           }}
         >
-          Favoris comics
+          Comics
         </button>
         <button
           onClick={() => {
             setIsComicFavOrCharcFav("character");
           }}
         >
-          Favoris Personnages
+          Personnages
         </button>
       </div>
 
@@ -63,9 +63,9 @@ const Favoris = ({ comicFavoris, setComicFavoris, characterFavoris, setCharacter
         </div>
       ) : (
         <div>
-          {characterFavoris.map((favori) => {
+          {characterFavoris.map((favori, index) => {
             return (
-              <div className="favori-container">
+              <div className="favori-container" key={index}>
                 <div className="img-container">
                   <img src={favori.thumbnail.path + "." + favori.thumbnail.extension} alt="" />
                 </div>

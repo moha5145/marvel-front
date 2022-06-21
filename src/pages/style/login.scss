@@ -1,12 +1,13 @@
 .login {
+  padding: 20px;
   //   color: white;
   .container {
     form {
       max-width: 700px;
-      margin: 100px auto;
+      margin: 10% auto;
       input {
         box-sizing: border-box;
-        height: 70px;
+        height: 60px;
         width: 100%;
         margin-bottom: 7px;
         padding: 10px;
@@ -29,6 +30,20 @@
 
       .submit:active {
         opacity: 0.6;
+      }
+
+      p {
+        color: #ee171f;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 10px;
+      }
+      div {
+        color: white;
+        margin-top: 10px;
+        a {
+          color: rgb(165, 161, 161);
+        }
       }
     }
   }

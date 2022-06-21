@@ -23,8 +23,10 @@ function App() {
   const [isLoading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
-  const [comicFavoris, setComicFavoris] = useState();
-  const [characterFavoris, setCharacterFavoris] = useState();
+  const [comicFavoris, setComicFavoris] = useState([]);
+  const [characterFavoris, setCharacterFavoris] = useState([]);
+
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,8 +72,8 @@ function App() {
             path="/characters"
             element={<Characters characterSearch={characterSearch} characterFavoris={characterFavoris} setCharacterFavoris={setCharacterFavoris} />}
           />
-          <Route path="/signup" element={<Signup userToken={userToken} setUserToken={setUserToken} />} />
-          <Route path="/login" element={<Login userToken={userToken} setUserToken={setUserToken} />} />
+          <Route path="/signup" element={<Signup userToken={userToken} setUserToken={setUserToken} setMessage={setMessage} message={message} />} />
+          <Route path="/login" element={<Login userToken={userToken} setUserToken={setUserToken} setMessage={setMessage} message={message} />} />
           <Route
             path="/favoris"
             element={

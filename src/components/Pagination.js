@@ -1,4 +1,4 @@
-import "./pagination.scss";
+import "./styles/pagination.scss";
 const Pagination = ({ page, setPage, count, limit, setSkip }) => {
   const numberOfPage = count / limit;
   return (

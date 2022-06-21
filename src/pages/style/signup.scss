@@ -1,5 +1,6 @@
 .sign-up {
-  margin-top: 40px;
+  margin-top: 0px;
+  padding: 20px;
   form {
     max-width: 700px;
     margin: 20px auto;
@@ -28,5 +29,20 @@
     .submit:active {
       opacity: 0.6;
     }
+    div {
+      color: white;
+      margin-top: 10px;
+      a {
+        color: rgb(165, 161, 161);
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .sign-up {
+    // margin-top: -120px;
+    display: flex;
+    align-items: flex-start;
   }
 }

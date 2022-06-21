@@ -1,8 +1,8 @@
 .home {
+  padding: 20px;
   .container {
     button {
-      height: 50px;
-      width: 100px;
+      margin-top: 25px;
     }
 
     span {
@@ -11,15 +11,17 @@
 
     .main {
       margin: 50px auto;
-      width: 1300px;
+      max-width: 1280px;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      justify-content: center;
+      gap: 16px;
       .img-container {
-        width: 310px;
+        width: 308px;
         height: 720px;
         border-bottom-right-radius: 30px;
         position: relative;
+        background-color: #ee171f;
         img {
           width: 100%;
           height: 64%;
@@ -53,6 +55,18 @@
             padding: 5px 0;
             font-size: 0.9rem;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  .home {
+    .container {
+      .main {
+        .img-container {
+          width: 100%;
         }
       }
     }

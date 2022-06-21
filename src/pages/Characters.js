@@ -36,22 +36,22 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris }) 
   const addFavoris = async (character) => {
     try {
       const newFavoris = [...characterFavoris];
-      newFavoris.push(newFavoris);
+      newFavoris.push(character);
+      // console.log("chara=>", newFavoris);
       setCharacterFavoris(newFavoris);
-      console.log("chara=>", newFavoris);
 
       const response = await axios.post("https://marvel-back-moha.herokuapp.com/caractair/favoris/post", character);
       console.log(response.data);
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
 
   const removeFavoris = async (character) => {
     try {
       console.log("char fav", character);
-      const favoris = [...characterFavoris];
-      const result = favoris.filter((fav) => fav._id !== character._id);
+      // const favoris = [...characterFavoris];
+      const result = characterFavoris.filter((fav) => fav._id !== character._id);
       setCharacterFavoris(result);
 
       const response = await axios.post("https://marvel-back-moha.herokuapp.com/character/favoris/delete", character);
@@ -71,30 +71,39 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris }) 
           <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={characters.count} limit={characters.limit} />
           <div className="container">
             {characters.results.map((character) => {
+              let like = characterFavoris.find((fav) => fav._id === character._id);
               return (
                 // <Link to={`/comics/${character._id}`} key={character._id}>
                 <div
+                  key={character._id}
                   className="img-container"
-                  onClick={() => {
+                  onClick={(event) => {
+                    // if (event.target !== event.currentTarget) return;
                     navigate(`/comics/${character._id}`);
                   }}
                 >
                   <img src={character.thumbnail.path + "." + character.thumbnail.extension} alt="" />
 
                   <div>
-                    {!characterFavoris.find((fav) => fav._id === character._id) ? (
+                    {!like && (
                       <i
                         className="fa-solid fa-heart white"
                         onClick={(event) => {
+                          console.log("like");
                           event.stopPropagation();
 
                           addFavoris(character);
                         }}
                       ></i>
-                    ) : (
+                    )}
+
+                    {like && (
                       <i
                         className="fa-solid fa-heart red"
                         onClick={(event) => {
+                          // if (event.target !== event.currentTarget) return;
+                          console.log("deslike");
+
                           event.stopPropagation();
 
                           removeFavoris(character);
