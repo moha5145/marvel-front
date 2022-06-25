@@ -1,8 +1,8 @@
 import "./styles/nav.scss";
-import { Link } from "react-router-dom";
-import Cookie from "js-cookie";
 
-const Nav = ({ userToken, setUserToken, setShowModal }) => {
+import { Link } from "react-router-dom";
+
+const Nav = ({ userToken, setUserToken, setShowModal, setUser }) => {
   return (
     <nav
       onClick={() => {
@@ -38,8 +38,7 @@ const Nav = ({ userToken, setUserToken, setShowModal }) => {
           <Link
             to="/login"
             onClick={() => {
-              Cookie.remove("token");
-              setUserToken(null);
+              setUser(null, null);
             }}
           >
             <span>Se déconnecter</span>

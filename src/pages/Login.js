@@ -1,10 +1,9 @@
 import "./style/login.scss";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CustomInput from "../components/CustomInput";
-const Login = ({ setUserToken, setMessage, message }) => {
+const Login = ({ setMessage, message, setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,19 +12,20 @@ const Login = ({ setUserToken, setMessage, message }) => {
   const fetchData = async () => {
     try {
       setMessage("");
-      const response = await axios.post("https://marvel-back-moha.herokuapp.com/login", { email, password });
+      const response = await axios.post("http://localhost:4000/login", { email, password });
       console.log(response.data);
       const token = response.data.token;
+      const userId = response.data.id;
+      console.log(userId);
+
       if (token) {
-        setUserToken(token);
-        Cookies.set("token", token);
+        setUser(token, userId);
         navigate("/");
       }
     } catch (error) {
       console.log(error.response.data.error);
-      // if (error.response.data.error === "Compte introuvable") {
+
       setMessage("Email ou mot de passe incorrect");
-      // }
     }
   };
   const handelSubmit = (event) => {

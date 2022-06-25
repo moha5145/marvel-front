@@ -62,7 +62,9 @@
     background: none;
 
     .container {
-      display: none;
+      .nav-container {
+        display: none;
+      }
     }
     .modal {
       box-sizing: border-box;

@@ -1,28 +1,34 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./style/favoris.scss";
-const Favoris = ({ comicFavoris, setComicFavoris, characterFavoris, setCharacterFavoris }) => {
+const Favoris = ({ comicFavoris, setComicFavoris, characterFavoris, setCharacterFavoris, userId }) => {
   const [isComicFavOrCharcFav, setIsComicFavOrCharcFav] = useState("comic");
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://marvel-back-moha.herokuapp.com/character/favoris/get");
-        setCharacterFavoris(response.data);
+        if (userId) {
+          const response = await axios.get(`http://localhost:4000/character/favoris/${userId}`);
+          setCharacterFavoris(response.data);
 
-        const responseComicFavoris = await axios.get("https://marvel-back-moha.herokuapp.com/comics/favoris/get");
-        setComicFavoris(responseComicFavoris.data);
+          const responseComicFavoris = await axios.get(`http://localhost:4000/comics/favoris/${userId}`);
+          setComicFavoris(responseComicFavoris.data);
 
-        setIsLoading(false);
-        console.log(response.data);
+          setIsLoading(false);
+          console.log(response.data);
+        } else {
+          navigate("/login");
+        }
       } catch (error) {
         console.log(error.message);
       }
     };
 
     fetchData();
-  }, [setCharacterFavoris, setComicFavoris]);
+  }, [setCharacterFavoris, setComicFavoris, userId, navigate]);
   console.log(comicFavoris);
   return isLoading ? (
     <p>Loading ..</p>

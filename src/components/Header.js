@@ -6,7 +6,7 @@ import CustomSearchInput from "./CustomSearchInput";
 import Nav from "./Nav";
 import { useState } from "react";
 
-const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken }) => {
+const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken, setUser, favoriSearch, setFavoriSearch }) => {
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
@@ -41,9 +41,11 @@ const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken })
             {location.pathname === "/" && <CustomSearchInput setState={setComicSearch} />}
 
             {location.pathname === "/characters" && <CustomSearchInput setState={setCharacterSearch} />}
+
+            {location.pathname === "/favoris" && <CustomSearchInput setState={setFavoriSearch} />}
           </div>
           <section className="nav-container">
-            <Nav userToken={userToken} setUserToken={setUserToken} setShowModal={setShowModal} />
+            <Nav userToken={userToken} setUserToken={setUserToken} setShowModal={setShowModal} setUser={setUser} />
           </section>
         </div>
         {showModal && (
@@ -54,7 +56,7 @@ const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken })
                 setShowModal(false);
               }}
             ></i>
-            <Nav userToken={userToken} setUserToken={setUserToken} setShowModal={setShowModal} />
+            <Nav userToken={userToken} setUserToken={setUserToken} setShowModal={setShowModal} setUser={setUser} />
           </section>
         )}
       </section>

@@ -2,10 +2,9 @@ import "./style/signup.scss";
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import CustomInput from "../components/CustomInput";
 
-const Signup = ({ userToken, setUserToken }) => {
+const Signup = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,13 +18,11 @@ const Signup = ({ userToken, setUserToken }) => {
         email: email,
         password: password,
       };
-      console.log(user);
-      const response = await axios.post("https://marvel-back-moha.herokuapp.com/signup", user);
-      console.log(response.data);
+      const response = await axios.post("http://localhost:4000/signup", user);
       const token = response.data.token;
+      const userId = response.data._id;
       if (token) {
-        Cookies.set("token", token);
-        setUserToken(token);
+        setUser(token, userId);
         navigate("/");
       }
     } catch (error) {
