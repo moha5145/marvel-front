@@ -15,13 +15,12 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get(`http://localhost:4000/characters?name=${characterSearch}&skip=${skip}`);
-        const response = await axios.get(`http://localhost:4000/characters?name=${characterSearch}&skip=${skip}`);
+        const response = await axios.get(`https://marvel-back-moha.herokuapp.com/characters?name=${characterSearch}&skip=${skip}`);
 
         setCharacters(response.data);
 
         if (userId) {
-          const responseCharacterFavoris = await axios.get(`http://localhost:4000/character/favoris/${userId}`);
+          const responseCharacterFavoris = await axios.get(`https://marvel-back-moha.herokuapp.com/character/favoris/${userId}`);
 
           setCharacterFavoris(responseCharacterFavoris.data);
           console.log("fav", responseCharacterFavoris.data);
@@ -34,7 +33,7 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
     };
 
     fetchData();
-  }, [characterSearch, skip, setCharacterFavoris, userId, navigate, userToken]);
+  }, [characterSearch, skip, setCharacterFavoris, userId, userToken]);
 
   const addFavoris = async (character) => {
     try {
@@ -51,7 +50,7 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
         newFavoris.push(favoriToPush);
         setCharacterFavoris(newFavoris);
 
-        const response = await axios.post("http://localhost:4000/caractair/favoris/create", favoriToPush);
+        const response = await axios.post("https://marvel-back-moha.herokuapp.com/caractair/favoris/create", favoriToPush);
         console.log(response.data);
       } else {
         navigate("/login");
@@ -67,7 +66,7 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
       const result = characterFavoris.filter((fav) => fav.characterId !== character._id);
       setCharacterFavoris(result);
 
-      const response = await axios.post("http://localhost:4000/character/favoris/delete", ids);
+      const response = await axios.post("https://marvel-back-moha.herokuapp.com/character/favoris/delete", ids);
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
@@ -86,12 +85,10 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
             {characters.results.map((character) => {
               let like = characterFavoris.find((fav) => fav.characterId === character._id);
               return (
-                // <Link to={`/comics/${character._id}`} key={character._id}>
                 <div
                   key={character._id}
                   className="img-container"
                   onClick={(event) => {
-                    // if (event.target !== event.currentTarget) return;
                     navigate(`/comics/${character._id}`);
                   }}
                 >
@@ -114,9 +111,6 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
                       <i
                         className="fa-solid fa-heart red"
                         onClick={(event) => {
-                          // if (event.target !== event.currentTarget) return;
-                          // console.log("deslike");
-
                           event.stopPropagation();
 
                           removeFavoris(character);
@@ -130,7 +124,6 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
                     <p>{character.description}</p>
                   </div>
                 </div>
-                // </Link>
               );
             })}
           </div>

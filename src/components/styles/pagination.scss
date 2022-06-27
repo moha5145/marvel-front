@@ -1,7 +1,7 @@
 .pagination-btn {
   max-width: 1280px;
-  margin: 25px auto;
-  padding: 0px 30px;
+  margin: 0px auto;
+  padding: 0px 20px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -31,12 +31,23 @@
   }
 }
 
+@media (max-width: 1320px) {
+  .pagination-btn {
+    max-width: 950px;
+  }
+}
 @media (max-width: 1000px) {
+  .pagination-btn {
+    max-width: 630px;
+    display: flex;
+
+    justify-content: space-between;
+  }
 }
 @media (max-width: 670px) {
   .pagination-btn {
     display: flex;
 
-    justify-content: center;
+    justify-content: space-between;
   }
 }

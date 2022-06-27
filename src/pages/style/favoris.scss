@@ -1,6 +1,6 @@
 .favoris {
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
   p {
     color: white;
   }
@@ -60,15 +60,23 @@
   }
 }
 
-@media (max-width: 900px) {
-  .favori-container {
-    flex-direction: column;
+@media (max-width: 1000px) {
+  .favoris {
+    padding: 0 20px !important;
+  }
+}
 
-    .description {
-      padding: 0px;
-      width: 85% !important;
-      h2 {
-        margin-bottom: 20px;
+@media (max-width: 900px) {
+  .favoris {
+    .favori-container {
+      flex-direction: column;
+
+      .description {
+        padding: 0px;
+        width: 85% !important;
+        h2 {
+          margin-bottom: 20px;
+        }
       }
     }
   }

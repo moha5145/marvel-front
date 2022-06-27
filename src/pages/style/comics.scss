@@ -1,60 +1,54 @@
-.home {
-  padding: 20px;
-  .container {
-    button {
-      margin-top: 25px;
-    }
+.container {
+  span {
+    color: white;
+  }
 
-    span {
-      color: white;
-    }
+  .main {
+    padding: 0 20px;
+    margin: 40px auto;
+    max-width: 1280px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    .img-container {
+      width: 308px;
+      height: 720px;
+      border-bottom-right-radius: 30px;
+      position: relative;
+      background-color: #ee171f;
+      img {
+        width: 100%;
+        height: 64%;
+        object-fit: cover;
+      }
 
-    .main {
-      margin: 50px auto;
-      max-width: 1280px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      .img-container {
-        width: 308px;
-        height: 720px;
-        border-bottom-right-radius: 30px;
-        position: relative;
-        background-color: #ee171f;
-        img {
-          width: 100%;
-          height: 64%;
-          object-fit: cover;
+      .fav-container {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        i {
+          font-size: 55px;
+          padding: 5px;
+        }
+        .red-favori {
+          color: #ee171f !important;
         }
 
-        .fav-container {
-          position: absolute;
-          top: 40px;
-          right: 10px;
-          i {
-            font-size: 55px;
-            padding: 5px;
-          }
-          .red-favori {
-            color: #ee171f !important;
-          }
-
-          .white-favori {
-            color: white !important;
-          }
+        .white-favori {
+          color: white !important;
         }
-        .description {
-          padding: 10px;
+      }
+      .description {
+        padding: 10px;
 
-          h3 {
-            color: white;
-            margin-bottom: 10px;
-          }
-          p {
-            padding: 5px 0;
-            font-size: 0.9rem;
-          }
+        h3 {
+          color: white;
+          margin-bottom: 10px;
+        }
+        p {
+          padding: 5px 0;
+          font-size: 0.9rem;
         }
       }
     }
@@ -62,12 +56,10 @@
 }
 
 @media (max-width: 675px) {
-  .home {
-    .container {
-      .main {
-        .img-container {
-          width: 100%;
-        }
+  .container {
+    .main {
+      .img-container {
+        width: 100%;
       }
     }
   }

@@ -6,7 +6,7 @@ import CustomSearchInput from "./CustomSearchInput";
 import Nav from "./Nav";
 import { useState } from "react";
 
-const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken, setUser, favoriSearch, setFavoriSearch }) => {
+const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken, setUser, isComicFavori, setComicFavoriSearch, setCharacterFavoriSearch }) => {
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
@@ -23,7 +23,6 @@ const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken, s
           }}
         />
         <i
-          // style={location.pathname === "/favoris" ? { marginTop: "0px" } : {}}
           className="fa-solid fa-bars menu"
           onClick={() => {
             setShowModal(!showModal);
@@ -42,7 +41,9 @@ const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken, s
 
             {location.pathname === "/characters" && <CustomSearchInput setState={setCharacterSearch} />}
 
-            {location.pathname === "/favoris" && <CustomSearchInput setState={setFavoriSearch} />}
+            {location.pathname === "/favoris" && (
+              <>{isComicFavori ? <CustomSearchInput setState={setComicFavoriSearch} /> : <CustomSearchInput setState={setCharacterFavoriSearch} />}</>
+            )}
           </div>
           <section className="nav-container">
             <Nav userToken={userToken} setUserToken={setUserToken} setShowModal={setShowModal} setUser={setUser} />

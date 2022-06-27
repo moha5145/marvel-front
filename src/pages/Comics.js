@@ -5,7 +5,6 @@ import Pagination from "../components/Pagination";
 import { useNavigate } from "react-router-dom";
 
 const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setSkip, isLoading, userId, userToken }) => {
-  console.log("comic fav de  home", comicFavoris);
   const navigate = useNavigate();
   const fetchFavoriComics = async (comic) => {
     try {
@@ -21,9 +20,8 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
         const newFavoris = [...comicFavoris];
 
         newFavoris.push(favoriToPush);
-        console.log("userId from comic", userId);
         setComicFavoris(newFavoris);
-        const response = await axios.post("http://localhost:4000/comics/favoris/create", favoriToPush);
+        const response = await axios.post("https://marvel-back-moha.herokuapp.com/comics/favoris/create", favoriToPush);
         console.log("toDb", response.data);
       } else {
         navigate("/login");
@@ -36,7 +34,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
   const deleteFavoriComics = async (comic) => {
     try {
       const ids = { _id: comic._id, userId: userId };
-      const response = await axios.post("http://localhost:4000/comics/favoris/delete", ids);
+      const response = await axios.post("https://marvel-back-moha.herokuapp.com/comics/favoris/delete", ids);
       console.log("toDb", response.data);
 
       const newFavoris = [...comicFavoris];
@@ -50,62 +48,54 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
   };
 
   return (
-    <section className="home">
-      <div className="container">
-        {isLoading ? (
-          <p>Lodding ...</p>
-        ) : (
-          <>
-            <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={comics.count} limit={comics.limit} />
-            <div className="main">
-              {comics.results.map((comic) => {
-                // console.log(comic);
-                let like = comicFavoris.find((fav) => fav.comicId === comic._id);
-                return (
-                  <div className="img-container" key={comic._id}>
-                    <img src={comic.thumbnail.path + "." + comic.thumbnail.extension} alt="" />
+    <div className="container home">
+      {isLoading ? (
+        <p>Lodding ...</p>
+      ) : (
+        <>
+          <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={comics.count} limit={comics.limit} />
+          <div className="main">
+            {comics.results.map((comic) => {
+              let like = comicFavoris.find((fav) => fav.comicId === comic._id);
+              return (
+                <div className="img-container" key={comic._id}>
+                  <img src={comic.thumbnail.path + "." + comic.thumbnail.extension} alt="" />
 
-                    <div className="fav-container">
-                      <div>
-                        {!like && (
-                          <i
-                            className="fa-solid fa-heart white-favori "
-                            onClick={() => {
-                              // console.log("fav form click");
-                              fetchFavoriComics(comic);
-                            }}
-                          ></i>
-                        )}
+                  <div className="fav-container">
+                    <div>
+                      {!like && (
+                        <i
+                          className="fa-solid fa-heart white-favori "
+                          onClick={() => {
+                            fetchFavoriComics(comic);
+                          }}
+                        ></i>
+                      )}
 
-                        {like && (
-                          <i
-                            className="fa-solid fa-heart red-favori"
-                            onClick={() => {
-                              deleteFavoriComics(comic);
-                            }}
-                          ></i>
-                        )}
-
-                        {/* {comicFavoris.find((fav) => fav._id === comic._id) && (
-                          
-                        )} */}
-                      </div>
-                    </div>
-
-                    <div className="description">
-                      <h3>{comic.title}</h3>
-                      <p>{comic.description}</p>
+                      {like && (
+                        <i
+                          className="fa-solid fa-heart red-favori"
+                          onClick={() => {
+                            deleteFavoriComics(comic);
+                          }}
+                        ></i>
+                      )}
                     </div>
                   </div>
-                );
-              })}
-            </div>
 
-            <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={comics.count} limit={comics.limit} />
-          </>
-        )}
-      </div>
-    </section>
+                  <div className="description">
+                    <h3>{comic.title}</h3>
+                    <p>{comic.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={comics.count} limit={comics.limit} />
+        </>
+      )}
+    </div>
   );
 };
 

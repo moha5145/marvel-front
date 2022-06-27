@@ -26,21 +26,23 @@ function App() {
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
 
-  const [comicFavoris, setComicFavoris] = useState([]);
-  const [characterFavoris, setCharacterFavoris] = useState([]);
-  const [favoriSearch, setFavoriSearch] = useState("");
+  const [comicFavoris, setComicFavoris] = useState();
+  const [characterFavoris, setCharacterFavoris] = useState();
 
+  const [comicFavoriSearch, setComicFavoriSearch] = useState("");
+  const [characterFavoriSearch, setCharacterFavoriSearch] = useState("");
+
+  const [isComicFavori, setIsComicFavori] = useState(true);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     try {
       const fetchData = async () => {
-        // const response = await axios.get(`http://localhost:4000/comics?title=${comicSearch}&skip=${skip}`);
-        const response = await axios.get(`http://localhost:4000/comics?title=${comicSearch}&skip=${skip}`);
+        const response = await axios.get(`https://marvel-back-moha.herokuapp.com/comics?title=${comicSearch}&skip=${skip}`);
         setComics(response.data);
 
         if (userId) {
-          const responseComicFavoris = await axios.get(`http://localhost:4000/comics/favoris/${userId}`);
+          const responseComicFavoris = await axios.get(`https://marvel-back-moha.herokuapp.com/comics/favoris/${userId}`);
           setComicFavoris(responseComicFavoris.data);
 
           console.log(responseComicFavoris.data);
@@ -56,7 +58,6 @@ function App() {
 
   const setUser = (token, id) => {
     if (token !== null) {
-      console.log("coukies", id);
       Cookies.set("token", token);
       Cookies.set("userId", id);
     } else {
@@ -66,6 +67,7 @@ function App() {
     setUserToken(token);
     setuserId(id);
   };
+
   return (
     <div className="App">
       <Router>
@@ -75,8 +77,10 @@ function App() {
           userToken={userToken}
           setUserToken={setUserToken}
           setUser={setUser}
-          favoriSearch={favoriSearch}
-          setFavoriSearch={setFavoriSearch}
+          isComicFavori={isComicFavori}
+          setIsComicFavori={setIsComicFavori}
+          setComicFavoriSearch={setComicFavoriSearch}
+          setCharacterFavoriSearch={setCharacterFavoriSearch}
         />
         <Routes>
           <Route
@@ -129,8 +133,10 @@ function App() {
                 characterFavoris={characterFavoris}
                 setCharacterFavoris={setCharacterFavoris}
                 userId={userId}
-                favoriSearch={favoriSearch}
-                setFavoriSearch={setFavoriSearch}
+                isComicFavori={isComicFavori}
+                setIsComicFavori={setIsComicFavori}
+                comicFavoriSearch={comicFavoriSearch}
+                characterFavoriSearch={characterFavoriSearch}
               />
             }
           />

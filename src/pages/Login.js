@@ -12,7 +12,7 @@ const Login = ({ setMessage, message, setUser }) => {
   const fetchData = async () => {
     try {
       setMessage("");
-      const response = await axios.post("http://localhost:4000/login", { email, password });
+      const response = await axios.post("https://marvel-back-moha.herokuapp.com/login", { email, password });
       console.log(response.data);
       const token = response.data.token;
       const userId = response.data.id;

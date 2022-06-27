@@ -7,18 +7,15 @@ import { useParams } from "react-router-dom";
 const Comic = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  //   setLoading(false);
+
   const id = useParams();
-  //   console.log(id.characterId);
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await axios.get(`http://localhost:4000/comics/${id.characterId}`);
-      const response = await axios.get(`http://localhost:4000/comics/${id.characterId}`);
+      const response = await axios.get(`https://marvel-back-moha.herokuapp.com/comics/${id.characterId}`);
 
       setIsLoading(false);
       setData(response.data);
-      // console.log(response.data);
     };
     fetchData();
   }, [id.characterId]);
