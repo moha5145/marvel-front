@@ -22,7 +22,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
         newFavoris.push(favoriToPush);
         setComicFavoris(newFavoris);
         const response = await axios.post("https://marvel-back-moha.herokuapp.com/comics/favoris/create", favoriToPush);
-        console.log("toDb", response.data);
+        console.log(response.data);
       } else {
         navigate("/login");
       }
@@ -35,7 +35,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
     try {
       const ids = { _id: comic._id, userId: userId };
       const response = await axios.post("https://marvel-back-moha.herokuapp.com/comics/favoris/delete", ids);
-      console.log("toDb", response.data);
+      console.log(response.data);
 
       const newFavoris = [...comicFavoris];
 

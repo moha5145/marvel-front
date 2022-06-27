@@ -23,7 +23,6 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
           const responseCharacterFavoris = await axios.get(`https://marvel-back-moha.herokuapp.com/character/favoris/${userId}`);
 
           setCharacterFavoris(responseCharacterFavoris.data);
-          console.log("fav", responseCharacterFavoris.data);
         }
 
         setIsLoading(false);
@@ -99,7 +98,6 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
                       <i
                         className="fa-solid fa-heart white"
                         onClick={(event) => {
-                          console.log("like");
                           event.stopPropagation();
 
                           addFavoris(character);

@@ -29,7 +29,6 @@ const Favoris = ({
           setComicFavoris(responseComicFavoris.data);
 
           setIsLoading(false);
-          console.log(response.data);
         } else {
           navigate("/login");
         }

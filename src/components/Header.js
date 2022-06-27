@@ -10,7 +10,6 @@ const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken, s
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
-  console.log(location.pathname);
   return (
     <>
       <div className="header-img-container">

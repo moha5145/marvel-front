@@ -26,8 +26,8 @@ function App() {
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
 
-  const [comicFavoris, setComicFavoris] = useState();
-  const [characterFavoris, setCharacterFavoris] = useState();
+  const [comicFavoris, setComicFavoris] = useState([]);
+  const [characterFavoris, setCharacterFavoris] = useState([]);
 
   const [comicFavoriSearch, setComicFavoriSearch] = useState("");
   const [characterFavoriSearch, setCharacterFavoriSearch] = useState("");
@@ -44,8 +44,6 @@ function App() {
         if (userId) {
           const responseComicFavoris = await axios.get(`https://marvel-back-moha.herokuapp.com/comics/favoris/${userId}`);
           setComicFavoris(responseComicFavoris.data);
-
-          console.log(responseComicFavoris.data);
         }
 
         setLoading(false);
