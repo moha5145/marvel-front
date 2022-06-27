@@ -18,21 +18,22 @@ function App() {
   const [userToken, setUserToken] = useState(Cookies.get("token") || null);
   const [userId, setuserId] = useState(Cookies.get("userId") || null);
 
+  const [isLoading, setLoading] = useState(true);
+
   const [comics, setComics] = useState();
   const [comicSearch, setComicSearch] = useState("");
-  const [characterSearch, setCharacterSearch] = useState("");
-
-  const [isLoading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [skip, setSkip] = useState(0);
-
   const [comicFavoris, setComicFavoris] = useState([]);
-  const [characterFavoris, setCharacterFavoris] = useState([]);
-
   const [comicFavoriSearch, setComicFavoriSearch] = useState("");
+
+  const [characterSearch, setCharacterSearch] = useState("");
+  const [characterFavoris, setCharacterFavoris] = useState([]);
   const [characterFavoriSearch, setCharacterFavoriSearch] = useState("");
 
   const [isComicFavori, setIsComicFavori] = useState(true);
+
+  const [page, setPage] = useState(1);
+  const [skip, setSkip] = useState(0);
+
   const [message, setMessage] = useState("");
 
   useEffect(() => {

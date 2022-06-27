@@ -27,7 +27,6 @@ const Comic = () => {
         <div className="lg-img-container">
           <img src={data.thumbnail.path + "." + data.thumbnail.extension} alt="" />
           <div className="description">
-            {/* {console.log(data)} */}
             <h2>{data.name}</h2>
             <p>{data.description}</p>
           </div>
