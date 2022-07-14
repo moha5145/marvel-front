@@ -9,11 +9,11 @@ const Nav = ({ userToken, setUserToken, setShowModal, setUser }) => {
         setShowModal(false);
       }}
     >
-      <Link to="/characters">
+      <Link to="/">
         <span>personnages</span>
       </Link>
 
-      <Link to="/">
+      <Link to="/comics">
         <span>comics</span>
       </Link>
 

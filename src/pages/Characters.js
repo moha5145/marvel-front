@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
 
+import { BallTriangle } from "react-loader-spinner";
+
 const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, userId, userToken }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState();
@@ -76,7 +78,9 @@ const Characters = ({ characterSearch, characterFavoris, setCharacterFavoris, us
     <section className="characters">
       characters
       {isLoading ? (
-        <p>Loading ...</p>
+        <div className="spiner ">
+          <BallTriangle heigth="100" width="100" color="#ee171f" ariaLabel="loading-indicator" />
+        </div>
       ) : (
         <>
           <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={characters.count} limit={characters.limit} />

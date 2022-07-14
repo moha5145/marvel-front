@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BallTriangle } from "react-loader-spinner";
 import "./style/favoris.scss";
 const Favoris = ({
   comicFavoris,
@@ -41,7 +42,9 @@ const Favoris = ({
   }, [setCharacterFavoris, userId, navigate, setComicFavoris, characterFavoriSearch, comicFavoriSearch]);
 
   return isLoading ? (
-    <p>Loading ..</p>
+    <div className="spiner ">
+      <BallTriangle heigth="100" width="100" color="#ee171f" ariaLabel="loading-indicator" />
+    </div>
   ) : (
     <div className="favoris">
       <div className="btn-container">

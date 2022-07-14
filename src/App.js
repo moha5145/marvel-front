@@ -85,6 +85,20 @@ function App() {
           <Route
             path="/"
             element={
+              <Characters
+                characterSearch={characterSearch}
+                characterFavoris={characterFavoris}
+                setCharacterFavoris={setCharacterFavoris}
+                userId={userId}
+                userToken={userToken}
+              />
+            }
+          />
+
+          <Route path="/comics/:characterId" element={<Character />} />
+          <Route
+            path="/comics"
+            element={
               <Comics
                 comicSearch={comicSearch}
                 comicFavoris={comicFavoris}
@@ -96,20 +110,6 @@ function App() {
                 setPage={setPage}
                 setSkip={setSkip}
                 isLoading={isLoading}
-                userId={userId}
-                userToken={userToken}
-              />
-            }
-          />
-
-          <Route path="/comics/:characterId" element={<Character />} />
-          <Route
-            path="/characters"
-            element={
-              <Characters
-                characterSearch={characterSearch}
-                characterFavoris={characterFavoris}
-                setCharacterFavoris={setCharacterFavoris}
                 userId={userId}
                 userToken={userToken}
               />

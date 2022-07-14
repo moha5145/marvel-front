@@ -36,9 +36,9 @@ const Header = ({ setComicSearch, setCharacterSearch, userToken, setUserToken, s
       >
         <div className="container">
           <div className="input-container">
-            {location.pathname === "/" && <CustomSearchInput setState={setComicSearch} />}
+            {location.pathname === "/" && <CustomSearchInput setState={setCharacterSearch} />}
 
-            {location.pathname === "/characters" && <CustomSearchInput setState={setCharacterSearch} />}
+            {location.pathname === "/comics" && <CustomSearchInput setState={setComicSearch} />}
 
             {location.pathname === "/favoris" && (
               <>{isComicFavori ? <CustomSearchInput setState={setComicFavoriSearch} /> : <CustomSearchInput setState={setCharacterFavoriSearch} />}</>

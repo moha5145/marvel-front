@@ -4,6 +4,8 @@ import axios from "axios";
 import Pagination from "../components/Pagination";
 import { useNavigate } from "react-router-dom";
 
+import { BallTriangle } from "react-loader-spinner";
+
 const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setSkip, isLoading, userId, userToken }) => {
   const navigate = useNavigate();
   const fetchFavoriComics = async (comic) => {
@@ -50,7 +52,9 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
   return (
     <div className="container home">
       {isLoading ? (
-        <p>Lodding ...</p>
+        <div className="spiner ">
+          <BallTriangle heigth="100" width="100" color="#ee171f" ariaLabel="loading-indicator" />
+        </div>
       ) : (
         <>
           <Pagination page={page} setPage={setPage} skip={skip} setSkip={setSkip} count={comics.count} limit={comics.limit} />
