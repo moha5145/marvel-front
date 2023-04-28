@@ -23,10 +23,10 @@ const Favoris = ({
     const fetchData = async () => {
       try {
         if (userId) {
-          const response = await axios.get(`https://marvel-back-moha.herokuapp.com/character/favoris/${userId}?name=${characterFavoriSearch}`);
+          const response = await axios.get(`https://marvel-back-k3xo.onrender.com/character/favoris/${userId}?name=${characterFavoriSearch}`);
           setCharacterFavoris(response.data);
 
-          const responseComicFavoris = await axios.get(`https://marvel-back-moha.herokuapp.com/comics/favoris/${userId}?title=${comicFavoriSearch}`);
+          const responseComicFavoris = await axios.get(`https://marvel-back-k3xo.onrender.com/comics/favoris/${userId}?title=${comicFavoriSearch}`);
           setComicFavoris(responseComicFavoris.data);
 
           setIsLoading(false);

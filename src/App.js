@@ -39,11 +39,11 @@ function App() {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const response = await axios.get(`https://marvel-back-moha.herokuapp.com/comics?title=${comicSearch}&skip=${skip}`);
+        const response = await axios.get(`https://marvel-back-k3xo.onrender.com/comics?title=${comicSearch}&skip=${skip}`);
         setComics(response.data);
 
         if (userId) {
-          const responseComicFavoris = await axios.get(`https://marvel-back-moha.herokuapp.com/comics/favoris/${userId}`);
+          const responseComicFavoris = await axios.get(`https://marvel-back-k3xo.onrender.com/comics/favoris/${userId}`);
           setComicFavoris(responseComicFavoris.data);
         }
 

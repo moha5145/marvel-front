@@ -18,7 +18,7 @@ const Signup = ({ setUser }) => {
         email: email,
         password: password,
       };
-      const response = await axios.post("https://marvel-back-moha.herokuapp.com/signup", user);
+      const response = await axios.post("https://marvel-back-k3xo.onrender.com/signup", user);
       const token = response.data.token;
       const userId = response.data._id;
       if (token) {
