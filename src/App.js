@@ -14,6 +14,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import axios from "axios";
 
+const apiUrl = "https://marvel-ctwlkch0.b4a.run"
+
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("token") || null);
   const [userId, setuserId] = useState(Cookies.get("userId") || null);
@@ -35,15 +37,15 @@ function App() {
   const [skip, setSkip] = useState(0);
 
   const [message, setMessage] = useState("");
-
+  
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const response = await axios.get(`https://marvel-back-k3xo.onrender.com/comics?title=${comicSearch}&skip=${skip}`);
+        const response = await axios.get(`${apiUrl}/comics?title=${comicSearch}&skip=${skip}`);
         setComics(response.data);
 
         if (userId) {
-          const responseComicFavoris = await axios.get(`https://marvel-back-k3xo.onrender.com/comics/favoris/${userId}`);
+          const responseComicFavoris = await axios.get(`${apiUrl}/comics/favoris/${userId}`);
           setComicFavoris(responseComicFavoris.data);
         }
 
@@ -91,11 +93,14 @@ function App() {
                 setCharacterFavoris={setCharacterFavoris}
                 userId={userId}
                 userToken={userToken}
+                apiUrl={apiUrl}
               />
             }
           />
 
-          <Route path="/comics/:characterId" element={<Character />} />
+          <Route
+            path="/comics/:characterId"
+            element={<Character />} />
           <Route
             path="/comics"
             element={
@@ -112,16 +117,33 @@ function App() {
                 isLoading={isLoading}
                 userId={userId}
                 userToken={userToken}
+                apiUrl={apiUrl}
               />
             }
           />
           <Route
             path="/signup"
-            element={<Signup userToken={userToken} setUserToken={setUserToken} setUser={setUser} setMessage={setMessage} message={message} />}
+            element={
+              <Signup
+                userToken={userToken}
+                setUserToken={setUserToken}
+                setUser={setUser}
+                setMessage={setMessage}
+                message={message}
+                apiUrl={apiUrl}/>
+              }
           />
           <Route
             path="/login"
-            element={<Login userToken={userToken} setUserToken={setUserToken} setUser={setUser} setMessage={setMessage} message={message} />}
+            element={
+              <Login
+                userToken={userToken}
+                setUserToken={setUserToken}
+                setUser={setUser}
+                setMessage={setMessage}
+                message={message}
+                apiUrl={apiUrl}/>
+              }
           />
           <Route
             path="/favoris"
@@ -136,6 +158,7 @@ function App() {
                 setIsComicFavori={setIsComicFavori}
                 comicFavoriSearch={comicFavoriSearch}
                 characterFavoriSearch={characterFavoriSearch}
+                apiUrl={apiUrl}
               />
             }
           />

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CustomInput from "../components/CustomInput";
-const Login = ({ setMessage, message, setUser }) => {
+const Login = ({ setMessage, message, setUser, apiUrl }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,7 +12,7 @@ const Login = ({ setMessage, message, setUser }) => {
   const fetchData = async () => {
     try {
       setMessage("");
-      const response = await axios.post("https://marvel-back-k3xo.onrender.com/login", { email, password });
+      const response = await axios.post(`${apiUrl}/login`, { email, password });
       const token = response.data.token;
       const userId = response.data.id;
 

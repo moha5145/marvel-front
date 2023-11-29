@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { BallTriangle } from "react-loader-spinner";
 
-const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setSkip, isLoading, userId, userToken }) => {
+const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setSkip, isLoading, userId, userToken, apiUrl }) => {
   const navigate = useNavigate();
   const fetchFavoriComics = async (comic) => {
     try {
@@ -23,7 +23,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
 
         newFavoris.push(favoriToPush);
         setComicFavoris(newFavoris);
-        const response = await axios.post("https://marvel-back-k3xo.onrender.com/comics/favoris/create", favoriToPush);
+        const response = await axios.post(`${apiUrl}/comics/favoris/create`, favoriToPush);
         console.log(response.data);
       } else {
         navigate("/login");
@@ -36,7 +36,7 @@ const Home = ({ comicFavoris, setComicFavoris, comics, skip, page, setPage, setS
   const deleteFavoriComics = async (comic) => {
     try {
       const ids = { _id: comic._id, userId: userId };
-      const response = await axios.post("https://marvel-back-k3xo.onrender.com/comics/favoris/delete", ids);
+      const response = await axios.post(`${apiUrl}/comics/favoris/delete`, ids);
       console.log(response.data);
 
       const newFavoris = [...comicFavoris];

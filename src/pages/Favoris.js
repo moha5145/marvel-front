@@ -15,6 +15,7 @@ const Favoris = ({
 
   comicFavoriSearch,
   characterFavoriSearch,
+  apiUrl
 }) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,10 +24,10 @@ const Favoris = ({
     const fetchData = async () => {
       try {
         if (userId) {
-          const response = await axios.get(`https://marvel-back-k3xo.onrender.com/character/favoris/${userId}?name=${characterFavoriSearch}`);
+          const response = await axios.get(`${apiUrl}/character/favoris/${userId}?name=${characterFavoriSearch}`);
           setCharacterFavoris(response.data);
 
-          const responseComicFavoris = await axios.get(`https://marvel-back-k3xo.onrender.com/comics/favoris/${userId}?title=${comicFavoriSearch}`);
+          const responseComicFavoris = await axios.get(`${apiUrl}/comics/favoris/${userId}?title=${comicFavoriSearch}`);
           setComicFavoris(responseComicFavoris.data);
 
           setIsLoading(false);
@@ -39,7 +40,7 @@ const Favoris = ({
     };
 
     fetchData();
-  }, [setCharacterFavoris, userId, navigate, setComicFavoris, characterFavoriSearch, comicFavoriSearch]);
+  }, [setCharacterFavoris, userId, navigate, setComicFavoris, characterFavoriSearch, comicFavoriSearch, apiUrl]);
 
   return isLoading ? (
     <div className="spiner ">

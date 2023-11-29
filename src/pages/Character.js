@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Comic = () => {
+const Comic = ({apiUrl}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,13 +12,13 @@ const Comic = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`https://marvel-back-k3xo.onrender.com/comics/${id.characterId}`);
+      const response = await axios.get(`${apiUrl}/comics/${id.characterId}`);
 
       setIsLoading(false);
       setData(response.data);
     };
     fetchData();
-  }, [id.characterId]);
+  }, [id.characterId, apiUrl]);
   return isLoading ? (
     <p>Loading ....</p>
   ) : (

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CustomInput from "../components/CustomInput";
 
-const Signup = ({ setUser }) => {
+const Signup = ({ setUser, apiUrl }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const Signup = ({ setUser }) => {
         email: email,
         password: password,
       };
-      const response = await axios.post("https://marvel-back-k3xo.onrender.com/signup", user);
+      const response = await axios.post(`${apiUrl}/signup`, user);
       const token = response.data.token;
       const userId = response.data._id;
       if (token) {
