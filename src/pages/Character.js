@@ -8,17 +8,18 @@ const Comic = ({apiUrl}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const id = useParams();
+  const { characterId } = useParams();
+  console.log('characterId', characterId)
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${apiUrl}/comics/${id.characterId}`);
+      const response = await axios.get(`${apiUrl}/comics/${characterId}`);
 
       setIsLoading(false);
       setData(response.data);
     };
     fetchData();
-  }, [id.characterId, apiUrl]);
+  }, [characterId, apiUrl]);
   return isLoading ? (
     <p>Loading ....</p>
   ) : (

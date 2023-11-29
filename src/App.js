@@ -100,7 +100,7 @@ function App() {
 
           <Route
             path="/comics/:characterId"
-            element={<Character />} />
+            element={<Character apiUrl={apiUrl} />} />
           <Route
             path="/comics"
             element={
